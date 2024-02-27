@@ -1,3 +1,5 @@
+import remonode.ossa.curve.SimpleCurve;
+
 import java.util.Scanner;
 
 public class CurveCalculate {

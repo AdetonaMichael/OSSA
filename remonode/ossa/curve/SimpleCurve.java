@@ -1,8 +1,8 @@
-
+package remonode.ossa.curve;
 /**
  * SimpleCurve
  */
-public class SimpleCurve {
+public class SimpleCurve implements Curve {
 
     public double radius;
     public double deflectionAngle;
@@ -19,11 +19,22 @@ public class SimpleCurve {
         radius = radiusInput;
         deflectionAngle = deflectionAngleInput;
         tangentLength = radiusInput*Math.tan(Math.toRadians(deflectionAngleInput/2));
-        longChord = 2*radiusInput*(Math.sin(Math.toRadians(deflectionAngleInput/2)));
-        externalDistance = radiusInput *(Math.cosh(Math.toRadians(deflectionAngleInput/2))-1);
-        curveLength = (deflectionAngleInput* 2*Math.PI*radiusInput)/360;
-        midOrdinate = radiusInput*(1-Math.cos(Math.toRadians(deflectionAngleInput/2)));
+    }
 
+    public void calculateMidOrdinate(double radiusInput, double deflectionAngleInput){
+        midOrdinate = radiusInput*(1-Math.cos(Math.toRadians(deflectionAngleInput/2)));
+    }
+
+    public void calculateLongChord(double radiusInput, double deflectionAngleInput){
+        longChord = 2*radiusInput*(Math.sin(Math.toRadians(deflectionAngleInput/2)));
+    }
+
+    public void calculateExternalDistance(double radiusInput, double deflectionAngleInput){
+        externalDistance = radiusInput *(Math.cosh(Math.toRadians(deflectionAngleInput/2))-1);
+    }
+
+    public void calculateCurveLength(double radiusInput, double deflectionAngleInput){
+        curveLength = (deflectionAngleInput* 2*Math.PI*radiusInput)/360;
     }
 
     public void showCurve(){
